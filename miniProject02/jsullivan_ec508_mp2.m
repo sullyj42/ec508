@@ -31,7 +31,7 @@ for iL = 1:length(L)
     end
 end
 
-for iL = 1:length(L); 
+for iL = 1:length(L)
     semilogy(SNRdb, (errSum(iL, :)), '.-k'); hold on; 
     semilogy(SNRdb, (P(iL, :))  , '.-r'); 
     semilogy(SNRdb, (Pe(iL, :)) , '.-b'); 
@@ -39,6 +39,8 @@ end
     legend('Simulation', 'Exact', 'Estimate'); 
     xlabel('SNR (dB)'); ylabel('Probability of Error'); 
     title('BPSK Error Rate for L = 1:3'); 
+    
+    print('partB', '-dpng'); 
 %% Supporting functions
 
 function err = calcErr(SNR, L) 
@@ -61,9 +63,8 @@ for iL = 1:length(L)
             xh = 1; 
         elseif norm(y - h*sqrt(SNR)) >= norm(y + h*sqrt(SNR))
             xh = -1; 
-        else 
-            warning("You're dumb")
-        end
+            
+        else; warning("You're dumb"); end
         err(iL, iSNR) = ~isequal(xh, a);
     end
 end
