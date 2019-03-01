@@ -114,6 +114,9 @@ for iL = 1:length(L)
         end
         hg = A.*sum(B,2);
         
+        % for mm = (M-Mtrain):(Mc) ............
+        % Make this work ... 
+        
         w   = 1/sqrt(2) * randn(L(iL),1) + 1i/sqrt(2) * randn(L(iL),1); 
         a   = (2*randi([0 1]) - 1);       % Produces +/-
         x   = sqrt(SNR(iSNR))*a;          % Scale the symbol by SNR   --> This could be vectorized
