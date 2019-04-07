@@ -1,0 +1,167 @@
+% This LaTeX was auto-generated from MATLAB code.
+% To make changes, update the MATLAB code and export to LaTeX again.
+
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{epstopdf}
+\usepackage{matlab}
+
+\sloppy
+\epstopdfsetup{outdir=./}
+\graphicspath{ {./ps1_images/} }
+
+\begin{document}
+
+\matlabtitle{Homework One}
+
+\begin{par}
+\begin{flushleft}
+clc; close all; clear all; 
+\end{flushleft}
+\end{par}
+
+
+\matlabheading{Problem 1.1 (Vectors)}
+
+\begin{matlabcode}
+x = [1i, 0, 1]; y = [1, -1, 2j]; 
+% (a) Calculate the length of x and y
+fprintf('The length of x is %01.2f and y is %01.2f', norm(x), norm(y));
+\end{matlabcode}
+\begin{matlaboutput}
+The length of x is 1.41 and y is 2.45
+\end{matlaboutput}
+\begin{matlabcode}
+% (b) Inner products
+fprintf(['The inner products are conugate identical. \n'...
+         '<x, y> = %01.1f + %01.1fj; <y, x> = %01.1f + %01.1fj.'], ...
+         dot(x,y), imag(dot(x,y)), dot(x,y), imag(dot(y,x))); 
+\end{matlabcode}
+\begin{matlaboutput}
+The inner products are conugate identical. 
+<x, y> = 0.0 + 1.0j; <y, x> = 0.0 + -1.0j.
+\end{matlaboutput}
+\begin{matlabcode}
+% (c) Give an example of a vector orthogonal to x and y
+a = sym('a'); b = sym('b'); 
+V = [a, b, 1]; 
+[a, b] = solve([0; 0] == [dot(x,V); dot(y,V)], [a, b]); 
+V = [a, b, 1]
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+V = 
+    $\displaystyle \left(\begin{array}{ccc}
+-i & -3 i & 1
+\end{array}\right)$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+[dot(x, V), dot(y,V)]
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+ans = 
+    $\displaystyle \left(\begin{array}{cc}
+0 & 0
+\end{array}\right)$
+\end{matlabsymbolicoutput}
+
+
+\matlabheading{Matrix Multiplication}
+
+\begin{par}
+\begin{flushleft}
+(a) Write out by hand
+\end{flushleft}
+\end{par}
+
+\vspace{1em}
+
+\vspace{1em}
+
+\vspace{1em}
+
+\begin{par}
+\begin{flushleft}
+(b) Write out by hand
+\end{flushleft}
+\end{par}
+
+\vspace{1em}
+
+\vspace{1em}
+
+\vspace{1em}
+
+\begin{matlabcode}
+% (c)
+A  = [1, 1, 1; 1, -1, 1; -1, -1, 1]; 
+B  = [1, 2, 1; 0,  3, 1;  0,  0, 1];
+A*B
+\end{matlabcode}
+\begin{matlaboutput}
+ans = 3x3    
+     1     5     3
+     1    -1     1
+    -1    -5    -1
+
+\end{matlaboutput}
+\begin{matlabcode}
+B*A
+\end{matlabcode}
+\begin{matlaboutput}
+ans = 3x3    
+     2    -2     4
+     2    -4     4
+    -1    -1     1
+
+\end{matlaboutput}
+
+\begin{par}
+\begin{flushleft}
+This tells us matrix multiplication is not commutitive. 
+\end{flushleft}
+\end{par}
+
+
+\matlabheading{Matrix calculations}
+
+\begin{matlabcode}
+A = [1, 1, 1, 1; 1, -1, 1, -1; 1, 1, -1, -1; 1, -1, -1, 1];
+trace(A); 
+det(A) % By hand, break into successive minors until 2x2
+\end{matlabcode}
+\begin{matlaboutput}
+ans = 16
+\end{matlaboutput}
+\begin{matlabcode}
+eig(A) % As defined on the review sheet
+\end{matlabcode}
+\begin{matlaboutput}
+ans = 4x1    
+    -2
+    -2
+     2
+     2
+
+\end{matlaboutput}
+\begin{matlabcode}
+[V, ~] = eig(A)
+\end{matlabcode}
+\begin{matlaboutput}
+V = 4x4    
+         0   -0.5000    0.2887   -0.8165
+   -0.7071    0.5000   -0.2887   -0.4082
+    0.7071    0.5000   -0.2887   -0.4082
+         0    0.5000    0.8660         0
+
+\end{matlaboutput}
+
+\end{document}
