@@ -20,7 +20,7 @@ clc; close all; clear all;
 pOut    = [0.01, 0.05, 0.1];  SNRdb = 0:20;
 SNR      = 10.^(SNRdb/10);
 L          =     1;    % Diversity
-M         = 1E6; % 1E6 == detailed, 1E5 == fast
+M         = 1E5; % 1E6 == detailed, 1E5 == fast
 h          = 1/sqrt(2) * randn(L,M) + 1j/sqrt(2) * randn(L,M);
 hd        = sort(abs(h).^2); 
 fprintf('The channel gains have a mean of %01.4f and a standard deviation of %1.4f', abs(mean(h)), std(h))
@@ -84,7 +84,7 @@ end
 
 %% Fix target rate
 figure; clc;
-SNRdb = 0:20; SNR = 10.^(SNRdb./10); L = 1:4;
+SNRdb = 0:50; SNR = 10.^(SNRdb./10); L = 1:4;
 R = 3; pOut = zeros(length(L), length(SNR));
 for j = 1:length(L)
     h        = 1/sqrt(2) * randn(L(j),M) + 1j/sqrt(2) * randn(L(j),M); % Should be LxN
@@ -109,7 +109,7 @@ xlabel('SNR (dB)'); ylabel('Probability of Outage'); title(sprintf('Probability 
 % This look like the curves for Probability of Error when sending a BPSK
 % from mini-project 2. Essentially there appears to be diminishing returns
 % when using higher and higher diversity levels. 
-% TEXT END
+% TEXT 
 %% PROBLEM 2
 %}
 %}
